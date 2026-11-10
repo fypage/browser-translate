@@ -1,0 +1,62 @@
+{
+  "manifest_version": 3,
+  "name": "译界 · 划词与整页翻译",
+  "version": "1.0.0",
+  "description": "划词即译、整页双语对照。支持 Google / 微软 / DeepL / OpenAI 兼容接口四套引擎，可自填 Key，译文落本地缓存。",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://cn.bing.com/*",
+    "https://translate.googleapis.com/*",
+    "https://api-free.deepl.com/*",
+    "https://api.deepl.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "译界",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "toggle-page-translate": {
+      "suggested_key": { "default": "Alt+T" },
+      "description": "整页翻译 / 还原"
+    },
+    "translate-selection": {
+      "suggested_key": { "default": "Alt+S" },
+      "description": "翻译选中文本"
+    }
+  }
+}

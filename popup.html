@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>译界</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo">译</span>
+    <div>
+      <h1>译界</h1>
+      <p id="sub">划词即译 · 整页双语</p>
+    </div>
+  </div>
+  <span class="ver">v1.0</span>
+</header>
+
+<button id="pageBtn" class="primary">
+  <span id="pageBtnText">翻译当前页面</span>
+  <kbd>Alt</kbd><kbd>T</kbd>
+</button>
+
+<section>
+  <label class="row-label">翻译引擎</label>
+  <div class="segment" id="engineSeg"></div>
+  <p class="hint" id="engineHint"></p>
+</section>
+
+<section>
+  <div class="field">
+    <label for="targetLang">目标语言</label>
+    <select id="targetLang"></select>
+  </div>
+  <div class="field">
+    <label for="sourceLang">源语言</label>
+    <select id="sourceLang"></select>
+  </div>
+</section>
+
+<section class="switches">
+  <label class="sw"><input type="checkbox" id="bilingual"><span></span>
+    <div><b>双语对照</b><i>原文下方插入译文</i></div>
+  </label>
+  <label class="sw"><input type="checkbox" id="selectionMode"><span></span>
+    <div><b>划词即译</b><i>选中文字自动弹气泡</i></div>
+  </label>
+  <label class="sw"><input type="checkbox" id="autoTranslate"><span></span>
+    <div><b>自动翻译</b><i>外语页面打开即翻</i></div>
+  </label>
+</section>
+
+<section id="cfgBox" class="cfg">
+  <div class="field">
+    <label for="apiKey">API Key</label>
+    <input type="password" id="apiKey" autocomplete="off" spellcheck="false" placeholder="sk-…">
+  </div>
+  <div class="field" id="baseUrlField">
+    <label for="baseUrl">接口地址</label>
+    <input type="text" id="baseUrl" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="field" id="modelField">
+    <label for="model">模型</label>
+    <input type="text" id="model" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="field col" id="glossaryField">
+    <label for="glossary">术语表</label>
+    <textarea id="glossary" rows="2" spellcheck="false" placeholder="每行一条，如：&#10;token=令牌&#10;workspace=工作台"></textarea>
+  </div>
+  <p class="hint warn" id="keyHint"></p>
+</section>
+
+<footer>
+  <span id="cacheInfo">缓存 0 条</span>
+  <button id="clearCache" class="link">清除</button>
+  <span class="dot">·</span>
+  <button id="openShortcuts" class="link">快捷键</button>
+</footer>
+
+<script src="popup.js"></script>
+</body>
+</html>
